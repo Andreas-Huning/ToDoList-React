@@ -9,6 +9,7 @@ Zuerst: npm install
 
 Danach zum Starten: npm run dev
 
+Eine Vorschau ist hier zu finden: https://todolist-react-v1-js.netlify.app/
 
 # React + Vite
 

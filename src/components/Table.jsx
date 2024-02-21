@@ -7,6 +7,7 @@ function Table(props) {
         <table>
             <thead>
                 <tr>
+                    <th>Nr.</th>
                     <th>Aufgaben</th>
                     <th>Bearbeiten</th>
                     <th>Löschen</th>

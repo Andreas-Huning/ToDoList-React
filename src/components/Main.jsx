@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import Table from './Table';
 
 function Main(props) {
@@ -30,6 +30,10 @@ function Main(props) {
         setToDoInput("")        
     }
 
+    function clearInput(){
+        setToDoInput("") 
+    }
+
     function editToDo(item){
         // console.log("Eintrag bearbeiten");
         // console.log(item);
@@ -40,21 +44,38 @@ function Main(props) {
             })
         })
     }
+    useEffect(()=>{
+        let toDoListNew = localStorage.getItem("toDoList");  
+        if(toDoListNew != null){    
+          let toDoListArr = JSON.parse(toDoListNew);
+          setToDoList(toDoListArr)
+        }  
+    },[])
+
+    useEffect(()=>{
+        let toDoListJSON = JSON.stringify(toDoList)
+        // console.log(toDoListJSON);
+        localStorage.setItem("toDoList", toDoListJSON);
+        
+    },[toDoList])
 
     return (
 
         <div className='container-main' onSubmit={(e)=>{handleSubmit(e)}}>
             <h1>To Do Liste</h1>
-            <div class="todo-container">
+            <div className="todo-container">
                 <h2>Aufgabe hinzufügen</h2>
-                <form class="formular">
+                <form className="formular">
                     <input className='inputfield' required type="text" placeholder="Bitte Aufgabe hier eintragen" name="todo" value={toDoInput} onChange={(e)=>{handleInput(e)}}/>
-                    <button>Speichern</button>
+                    <button disabled={toDoInput==""}>Speichern</button>
+                    <button onClick={clearInput} disabled={toDoInput==""}>Löschen</button>
                 </form>
             </div> 
-            <div className='table-container'>
+            {toDoList.length >0 &&
+                <div className='table-container'>
                 <Table toDoList={toDoList} delToDo={deltoDo} editToDo={editToDo}/> 
-            </div>         
+            </div>  
+            }                  
             
         </div>
        

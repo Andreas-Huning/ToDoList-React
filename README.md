@@ -3,7 +3,7 @@
  
 ToDo Liste mit React erstellt.
 
-gespeichert werden die Einträge im Local Storage
+Gespeichert werden die Einträge im Local Storage, verwendung von useState
 
 Zuerst: npm install
 

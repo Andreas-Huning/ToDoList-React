@@ -13,3 +13,4 @@ Eine Vorschau ist hier zu finden:
 
 https://todolist-react-v1-js.netlify.app/
 
+![Vorschau](image.png)
